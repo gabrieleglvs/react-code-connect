@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/PaginaDeLogin.css" />
     <link rel="stylesheet" href="./styles/CampoDeDigitacao.css" />
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div id="root"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
         integrity="sha512-8Q6Y9XnTbOE+JNvjBQwJ2H8S+UV4uA6hiRykhdtIyDYZ2TprdNmWOUaKdGzOhyr4dCyk287OejbPvwl7lrfqrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -24,19 +25,61 @@
         integrity="sha512-MIXku7j6pJ0hqd2T4WXZMGerp3BU9B91rfLRDp/McDBNNdnwTD+yLJaz9AHcYXT6k16dYTkG9S2KRPGxaBIfBQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script type="text/babel">
-            function Titulo() {
-                return (
-                    <h1 className='form__titulo'>Login</h1>
-                )
-            }
+    <script type="text/babel">
+        function Titulo() {
+            return <h1 className="form__titulo">Login</h1>;
+        }
 
-            function Subtitulo() {
-                return (
-                    <h2 className='form__texto'>Boas-vindas! Faça seu login.</h2>
-                )
-            }
-        </script>
+        function Subtitulo() {
+            return <h2 className="form__texto">Boas-vindas! Faça seu login.</h2>;
+        }
+
+        function CampoDeDigitacao(props) {
+            console.log(props)
+            return (
+                <div className="form__campo-digitacao">
+                    <label for={props.tipo}>{props.label}</label>
+                    <input type="email"
+                        placeholder={props.placeholder}
+                        required
+                        id={props.tipo} />
+                </div>
+            )
+        }
+
+        const Botao = () => {
+            return (
+                <button type="submit" className="form__botao">Login</button>
+            )
+        } 
+
+        function PaginaDeLogin() {
+            return (
+                <div className="container-login">
+                    <img
+                        src="./img/imagem-login.png"
+                        alt="Uma mulher negra de cabelos crespos usando óculos e mexendo no computador"
+                    />
+
+                    <section>
+                        <form>
+                            <Titulo />
+                            <Subtitulo />
+
+                            <CampoDeDigitacao tipo="email" label="Email ou usuário" placeholder="Digite o seu e-mail ou usuário"/>
+
+                            <CampoDeDigitacao tipo="senha" label="Senha" placeholder="Digite sua senha"/>
+
+                            <Botao/>
+                            
+                        </form>
+                    </section>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<PaginaDeLogin />);
+    </script>
 </body>
 
 </html>
