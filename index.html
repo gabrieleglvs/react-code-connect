@@ -26,15 +26,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/babel">
-        function Titulo({children}) {
+        const Titulo = ({children}) => {
             return <h1 className="form__titulo">{children}</h1>;
         }
 
-        function Subtitulo({children}) {
+        const Subtitulo = ({children}) => {
             return <h2 className="form__texto">{children}</h2>;
         }
 
-        function CampoDeDigitacao(props) {
+        const CampoDeDigitacao = (props) => {
             return (
                 <div className="form__campo-digitacao">
                     <label for={props.tipo}>{props.label}</label>
@@ -54,7 +54,7 @@
             )
         } 
 
-        function PaginaDeLogin() {
+        const PaginaDeLogin = () => {
 
             const [email, setEmail] = React.useState("");
             const [senha, setSenha] = React.useState("");
